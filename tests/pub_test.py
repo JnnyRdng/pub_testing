@@ -14,4 +14,6 @@ class TestPub(unittest.TestCase):
         result = self.pub.till
         self.assertEqual(100.00, result)
 
-    
+    def test_pub_has_no_drinks(self):
+        result = len(self.pub.drinks)
+        self.assertEqual(0, result)
