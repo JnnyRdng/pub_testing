@@ -8,5 +8,8 @@ class Customer:
     def reduce_wallet(self, amount):
         self.wallet -= amount
 
-    def increase_drunkness(self, amount):
-        self.drunkeness += amount
+    def increase_drunkness(self, drink):
+        self.drunkeness += drink.alcohol_level
+
+    def decrease_drunkeness(self, food):
+        self.drunkeness -= food.rejuvenation_level

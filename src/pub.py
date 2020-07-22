@@ -1,13 +1,16 @@
 from src.drink import Drink
 
+
 class Pub:
     def __init__(self, name, till):
         self.name = name
         self.till = till
         self.drinks = []
+        self.stock = {}
 
     def stock_drinks(self):
         self.drinks.append(Drink("Vodka", 5, 12))
+        self.drinks.append(Drink("Rum", 4, 10))
         self.drinks.append(Drink("Rum", 4, 10))
         self.drinks.append(Drink("Champagne", 26, 6))
 
@@ -35,4 +38,22 @@ class Pub:
             drink = self.find_drink(order)
             self.add_to_till(drink.price)
             customer.reduce_wallet(drink.price)
-            customer.increase_drunkness(drink.alcohol_level)
+            customer.increase_drunkness(drink)
+
+    def stock_take(self):
+        for drink in self.drinks:
+            if drink.name in self.stock:
+                self.stock[drink.name]["stock"] += 1
+            else:
+                self.stock[drink.name] = {
+                    "stock": 1,
+                    "price": drink.price,
+                    "alcohol_level": drink.alcohol_level,
+                }
+
+    def stock_value(self):
+        total_value = 0
+        for drink in self.stock:
+            cost = self.stock[drink]["stock"] * self.stock[drink]["price"]
+            total_value += cost
+        return total_value

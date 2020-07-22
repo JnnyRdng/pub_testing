@@ -19,11 +19,11 @@ class TestPub(unittest.TestCase):
 
     def test_pub_has_drinks(self):
         result = len(self.pub.drinks)
-        self.assertEqual(3, result)
+        self.assertEqual(4, result)
 
     def test_stock_drinks(self):
         result = len(self.pub.drinks)
-        self.assertEqual(3, result)
+        self.assertEqual(4, result)
 
     def test_find_drink_in_list(self):
         result = self.pub.find_drink("Vodka")
@@ -48,4 +48,12 @@ class TestPub(unittest.TestCase):
         self.pub.sell_with_id_check(self.customer, "Champage")
         self.assertEqual(20, self.customer.wallet)
 
-        
+    def test_run_stock_take(self):
+        self.pub.stock_take()
+        result = self.pub.stock["Rum"]["stock"]
+        self.assertEqual(2, result)
+
+    def test_stock_value(self):
+        self.pub.stock_take()
+        result = self.pub.stock_value()
+        self.assertEqual(39, result)
