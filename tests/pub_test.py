@@ -17,3 +17,8 @@ class TestPub(unittest.TestCase):
     def test_pub_has_no_drinks(self):
         result = len(self.pub.drinks)
         self.assertEqual(0, result)
+
+    def test_stock_drinks(self):
+        self.pub.stock_drinks()
+        result = len(self.pub.drinks)
+        self.assertEqual(3, result)
