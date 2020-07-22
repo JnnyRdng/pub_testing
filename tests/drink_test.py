@@ -4,7 +4,7 @@ from src.drink import Drink
 class TestDrink(unittest.TestCase):
 
     def setUp(self):
-        self.drink = Drink("Guinness", 3.50)
+        self.drink = Drink("Guinness", 3.50, 5)
 
     def test_drink_has_a_name(self):
         result = self.drink.name

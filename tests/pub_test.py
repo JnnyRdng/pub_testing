@@ -43,4 +43,9 @@ class TestPub(unittest.TestCase):
         self.pub.sell_with_id_check(teenager, "Rum")
         self.assertEqual(50, teenager.wallet)
 
-    
+    def test_customer_too_drunk(self):
+        self.customer.drunkeness = 30
+        self.pub.sell_with_id_check(self.customer, "Champage")
+        self.assertEqual(20, self.customer.wallet)
+
+        

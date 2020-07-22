@@ -27,8 +27,11 @@ class Pub:
     def check_id(self, customer):
         return customer.age >= 18
 
+    def check_drunkness(self, customer):
+        return customer.drunkeness < 25
+
     def sell_with_id_check(self, customer, order):
-        if self.check_id(customer):
+        if self.check_id(customer) and self.check_drunkness(customer):
             drink = self.find_drink(order)
             self.add_to_till(drink.price)
             customer.reduce_wallet(drink.price)
