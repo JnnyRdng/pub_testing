@@ -10,3 +10,8 @@ class Pub:
         self.drinks.append(Drink("Vodka", 5))
         self.drinks.append(Drink("Rum", 4))
         self.drinks.append(Drink("Champagne", 26))
+
+    def find_drink(self, name):
+        for drink in self.drinks:
+            if drink.name == name:
+                return drink
